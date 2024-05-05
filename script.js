@@ -56,19 +56,29 @@ function searchList ( listArr , target){
             }
         }
 
-           return "You are a fail"
+           return "you are fail"
 }
 let input = document.querySelector(".input")
 let text = document.querySelector(".result")
 let text2 = document.querySelector(".result2")
 let text3 = document.querySelector(".result3")
 let btn = document.querySelector(".btn")
+let err = document.querySelector(".err")
 let targetNum = input.value;
 let target = Number(targetNum)
 let result = searchList(listArr,target)
 btn.addEventListener("click", ()=>{
-    text.innerHTML ="Name is : " + result.name
-    text2.innerHTML ="Your Roll is : " + result.roll
-    text3.innerHTML ="You are : "  + result.result
+    if( input.value == ""){
+        err.innerHTML = "Enter Your Id"
+    }else if ( input.value <= 0){
+        err.innerHTML = "Enter your Valid Id"
+    }else{
+        err.innerHTML = ""
+    }
+    if( input.value > 0){
+        text.innerHTML ="Name is : " + result.name
+        text2.innerHTML ="Your Roll is : " + result.roll
+        text3.innerHTML ="You are : "  + result.result
+    }
     input.value = " "
 })
